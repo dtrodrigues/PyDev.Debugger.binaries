@@ -18,7 +18,7 @@ jobs:
         include:
           - name: "linux-py39"
             python-version: "3.9"
-            os: macos-10.15
+            os: macos-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -31,7 +31,7 @@ jobs:
     - name: Compile attach to process on Windows
       run: |
         cd ../PyDev.Debugger/pydevd_attach_to_process/linux_and_mac
-        cat compile_mac.sh
+        sed -i '' s/x86_64/aarch64/g compile_mac.sh
         ./compile_mac.sh
         
     - name: Copy files to upload
